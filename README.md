@@ -1,1 +1,2 @@
-лабы
+### Запуск проекта
+docker compose up -- build

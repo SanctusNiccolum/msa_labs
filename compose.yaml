@@ -1,0 +1,27 @@
+services:
+  app1:
+    build:
+      context: ./
+      dockerfile: Dockerfile
+    
+  app2:
+    build:
+      context: ./
+      dockerfile: Dockerfile
+
+  app3:
+    build:
+      context: ./
+      dockerfile: Dockerfile  
+
+
+  balancer:
+    image: nginx:stable-alpine3.20
+    ports:
+      - 8080:80
+    volumes:
+      - ./nginx.conf:/etc/nginx/nginx.conf:ro
+    depends_on:
+      - app1
+      - app2
+      - app3
